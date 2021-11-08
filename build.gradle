@@ -37,6 +37,33 @@ test {
     useJUnitPlatform()
 }
 
+test {
+	finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+	dependsOn test // tests are required to run before generating the report
+}
+
+jacoco {
+	toolVersion = "0.8.6"
+	reportsDir = file("$buildDir/reports/jacoco")
+}
+
+pitest {
+    //adds dependency to org.pitest:pitest-junit5-plugin and sets "testPlugin" to "junit5"
+    junit5PluginVersion = '0.12'
+	outputFormats = ['XML', 'HTML']
+    // ...
+}
+
+
+dependencyCheck {
+    autoUpdate=false
+    cveValidForHours=1
+    format='ALL'
+}
+
 String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'tkgregory'
 String imageName = "${dockerHubUsernameProperty}/spring-boot-api-example:$version"
 
