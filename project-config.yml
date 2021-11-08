@@ -1,0 +1,7 @@
+---
+config:
+  repo_type: gradle
+  repo_name: gradle_example
+  author: Manuel Herrera Pulido
+  email: manuel.herrera.pulido@kyndryl.com
+  group_maintainers: DevOps
