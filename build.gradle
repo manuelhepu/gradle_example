@@ -59,11 +59,10 @@ jacocoTestReport {
 }
 
 pitest {
-    targetClasses = ['our.base.package.*']  //by default "${project.group}.*"
-    pitestVersion = '1.7.0' //not needed when a default PIT version should be used
-    threads = 4
-    outputFormats = ['XML', 'HTML']
-    timestampedReports = false
+    //adds dependency to org.pitest:pitest-junit5-plugin and sets "testPlugin" to "junit5"
+    junit5PluginVersion = '0.12'
+	outputFormats = ['XML', 'HTML']
+    // ...
 }
 
 
